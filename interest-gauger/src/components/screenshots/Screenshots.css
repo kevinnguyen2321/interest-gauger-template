@@ -1,0 +1,43 @@
+/* Container for the carousel */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.carousel-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Carousel track that scrolls */
+.carousel-track {
+  display: flex;
+  width: calc(600px * 2); /* Adjust based on image width and duplicates */
+  animation: scroll 12s linear infinite;
+}
+
+/* Individual image styling */
+.carousel-img {
+  width: 45%; /* Set the desired width for each image */
+  margin: 0 10px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Animation keyframes for scrolling */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
