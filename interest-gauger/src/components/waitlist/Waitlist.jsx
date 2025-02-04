@@ -7,6 +7,7 @@ export const Waitlist = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isError, setIsError] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ export const Waitlist = () => {
 
       console.log('Subscription successful:', data);
       setMessage('Thanks for signing up!');
+      setIsError(false);
       // Clear the form
       setFirstName('');
       setLastName('');
@@ -22,6 +24,7 @@ export const Waitlist = () => {
     } catch (error) {
       console.error('Subscription error:', error);
       setMessage('Something went wrong, please try again.');
+      setIsError(true);
     }
   };
 
@@ -60,7 +63,11 @@ export const Waitlist = () => {
           Sign Up
         </button>
       </form>
-      {message && <p className="waitlist-message">{message}</p>}
+      {message && (
+        <p className={`waitlist-message ${isError ? 'error' : 'success'}`}>
+          {message}
+        </p>
+      )}
     </div>
   );
 };
