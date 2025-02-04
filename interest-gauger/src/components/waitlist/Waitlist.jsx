@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Waitlist.css';
+import { subscribeUser } from '../../managers/subscribeManager';
 
 export const Waitlist = () => {
   const [firstName, setFirstName] = useState('');
@@ -7,13 +8,21 @@ export const Waitlist = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // For now, simulate a submission
-    setMessage('Thanks for signing up!');
-    setFirstName('');
-    setLastName('');
-    setEmail('');
+    try {
+      const data = await subscribeUser({ firstName, lastName, email });
+
+      console.log('Subscription successful:', data);
+      setMessage('Thanks for signing up!');
+      // Clear the form
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+    } catch (error) {
+      console.error('Subscription error:', error);
+      setMessage('Something went wrong, please try again.');
+    }
   };
 
   return (
