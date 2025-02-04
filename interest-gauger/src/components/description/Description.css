@@ -1,0 +1,60 @@
+.description-wrapper {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 80px;
+}
+
+.description-wrapper h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.description-text {
+  font-size: 1.2rem;
+  color: #dcdcdc;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* MEDIA QUERIES */
+/* Small Mobile (Up to 320px) */
+@media (max-width: 320px) {
+  .description-wrapper {
+    width: 100%;
+  }
+
+  .description-text {
+    width: 85%;
+    font-size: 0.7rem;
+    margin-right: 30px;
+  }
+}
+
+/* Mobile (321px - 480px) */
+@media (min-width: 321px) and (max-width: 480px) {
+  .description-wrapper {
+    width: 100%;
+  }
+
+  .description-text {
+    width: 100%;
+    font-size: 0.9rem;
+    margin-right: 30px;
+  }
+}
+
+/* Large Mobile / Small Tablets (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .description-wrapper {
+    width: 100%;
+  }
+
+  .description-text {
+    width: 100%;
+    font-size: .9rem;
+    margin-right: 30px;
+  }
+}

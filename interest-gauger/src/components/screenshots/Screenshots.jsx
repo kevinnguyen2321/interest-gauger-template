@@ -8,6 +8,9 @@ import { useState } from 'react';
 export const Screenshots = () => {
   const [modalImage, setModalImage] = useState(null);
 
+  // Array of screenshot images
+  const screenshots = [ScreenShotOne, ScreenShotTwo, ScreenShotThree];
+
   const openModal = (src) => {
     setModalImage(src);
   };
@@ -20,51 +23,19 @@ export const Screenshots = () => {
     <>
       <div className="carousel">
         <h3 className="carousel-title">App Screenshots</h3>
-        <div className="carousel-track">
-          <img
-            src={ScreenShotOne}
-            alt="screenshot1"
-            className="carousel-img"
-            onClick={() => openModal(ScreenShotOne)}
-          />
-          <img
-            src={ScreenShotTwo}
-            alt="screenshot2"
-            className="carousel-img"
-            onClick={() => openModal(ScreenShotTwo)}
-          />
-          <img
-            src={ScreenShotThree}
-            alt="screenshot3"
-            className="carousel-img"
-            onClick={() => openModal(ScreenShotThree)}
-          />
-          {/* Duplicate images for infinite looping */}
-          <img
-            src={ScreenShotOne}
-            alt="screenshot1 duplicate"
-            className="carousel-img"
-            onClick={() => openModal(ScreenShotOne)}
-          />
-          <img
-            src={ScreenShotTwo}
-            alt="screenshot2 duplicate"
-            className="carousel-img"
-            onClick={() => openModal(ScreenShotTwo)}
-          />
-          <img
-            src={ScreenShotThree}
-            alt="screenshot3 duplicate"
-            className="carousel-img"
-            onClick={() => openModal(ScreenShotThree)}
-          />
+        <div className="carousel-container">
+          {screenshots.map((screenshot, index) => (
+            <img
+              key={index}
+              src={screenshot}
+              alt={`Screenshot ${index + 1}`}
+              className="carousel-image"
+              onClick={() => openModal(screenshot)}
+            />
+          ))}
         </div>
       </div>
-      <div>
-        {modalImage && (
-          <ImageModal imageSrc={modalImage} onClose={closeModal} />
-        )}
-      </div>
+      {modalImage && <ImageModal imageSrc={modalImage} onClose={closeModal} />}
     </>
   );
 };
