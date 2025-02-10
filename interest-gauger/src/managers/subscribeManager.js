@@ -10,13 +10,16 @@
  * @throws Will throw an error if the API call fails.
  */
 export async function subscribeUser({ firstName, lastName, email }) {
-  const response = await fetch('http://localhost:3000/api/subscribe', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ firstName, lastName, email }),
-  });
+  const response = await fetch(
+    'https://interest-gauger-template-api.vercel.app/api/subscribe',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ firstName, lastName, email }),
+    }
+  );
 
   if (!response.ok) {
     const errorData = await response.json();
